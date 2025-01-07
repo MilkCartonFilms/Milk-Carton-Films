@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Page | Milk Carton Films</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "acumin-pro", sans-serif;
+            background-color: white;
+            color: black;
+			font-weight: 800
+                }
+		.page-title h1 {
+    	font-weight: 800;
+}
+
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            align-items: center;
+        }
+
+        header .logo {
+            max-height: 55px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f4f4f4;
+        }
+		
+		        /* Footer Section */
+        footer {
+            background-color: whitesmoke;
+            color: black;
+            padding: 20px;
+            text-align: center;
+			font-weight: lighter; 
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+		}
+		footer .social-icons {
+			display: flex;
+			justify-content: center;
+			gap: 20px; /* Space between icons */
+			margin-top: 10px;
+		}
+
+		footer .social-icons a {
+			display: inline-block;
+		}
+
+		footer .social-icon {
+			width: 30px; /* Size of the icons */
+			height: 30px;
+			transition: transform 0.3s ease;
+		}
+
+footer .social-icon:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="banner">
+            <img src="Images/MCF logo.png" alt="Milk Carton Films Logo" class="logo">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <div class="dropdown">
+                    <a href="#">Our Work</a>
+                    <div class="dropdown-content">
+                        <a href="weddings.html">Weddings</a>
+                        <a href="commercials.html">Commercials</a>
+                        <a href="editing.html">Editing</a>
+                        <a href="travel.html">Travel</a>
+                        <a href="miscellaneous.html">Miscellaneous Projects</a>
+                        <a href="events.html">Events</a>
+                    </div>
+                </div>
+                <a href="social-media.html">Social Media</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-title">
+        <h1>New Page Content</h1>
+    </div>
+
+    <!-- Footer Section -->
+<footer>
+    <p>&copy; 2025 Milk Carton Films. All Rights Reserved.</p>
+    <div class="social-icons">
+		<a href="https://youtube.com/@milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon -YouTube.png" alt="YouTube" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com/milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon - Instagram.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://www.facebook.com/milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon - Facebook.png" alt="Facebook" class="social-icon">
+        </a>
+	</div>
+</footer>
+
+</body>
+</html>

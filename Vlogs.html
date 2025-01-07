@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editing | Milk Carton Films</title>
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            margin: 0;
+            font-family: "acumin-pro", sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* Header Section (same as landing page with smaller banner) */
+        header .banner {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0; /* Reduced padding for a smaller strip */
+            background-color: transparent;
+        }
+
+        header .logo {
+            max-height: 55px; /* Smaller logo */
+            width: auto;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3.5em;
+            margin: 20px 0 10px;
+            color: #333;
+        }
+
+        .page-subtext {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column grid */
+            gap: 20px;
+        }
+
+        .video-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .video-item h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .video-item p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="banner">
+            <img src="Images/MCF logo.png" alt="Milk Carton Films Logo" class="logo">
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <div class="container">
+        <h1 class="page-title">Editing</h1>
+        <p class="page-subtext">
+            Capturing your most memorable moments with care, creativity, and cinematic precision.
+        </p>
+
+        <div class="video-grid">
+            <!-- Video 1 -->
+            <div class="video-item">
+                <video controls>
+                  <source src="Video/Edits/Proposal jump.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Skydive Proposal</h3>
+                <p>Something sweet</p>
+            </div>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>
+            &copy; 2025 Milk Carton Films. All rights reserved. | 
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </footer>
+</body>
+</html>
