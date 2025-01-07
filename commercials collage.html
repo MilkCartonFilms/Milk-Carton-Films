@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercials | Milk Carton Films</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "acumin-pro", sans-serif;
+            background-color: white; /* White background */
+            color: black; /* Black text color */
+			font-weight: 800
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff; /* White banner */
+            padding-top: 20px; /* Add padding to the top of the header */
+            padding-bottom: 10px; /* Optional padding at the bottom of the header */
+        }
+
+      .banner {
+		display: flex;
+		justify-content: space-between;
+		width: 100%; /* Make banner full width */
+		max-width: 1200px; /* Optionally limit width */
+		align-items: center;
+		position: relative;
+	}
+
+header .logo {
+		max-height: 55px; /* Smaller logo */
+		width: auto;
+		position: relative; /* Changed from absolute to relative */
+		left: 0; /* Align the logo to the left */
+}
+
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* Align the menu items to the right */
+            margin-right: 0px; /* Optional: add some space from the right */
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* Title Styling */
+        .page-title {
+            text-align: center;
+            font-family: "acumin-pro", sans-serif;
+            font-size: 1.5em;
+            font-weight: 800;
+            margin: 30px 0; /* Space above and below the title */
+            color: black; /* Dark text color for the title */
+            width: 100%; /* Ensure it spans the full width */
+			
+        }
+		.page-title h1 {
+    	font-weight: 800;
+}
+
+        /* Main container for thumbnails */
+        .thumbnail-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; /* Gap between the columns */
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        /* Column styling - each column is independent */
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between thumbnails in each column */
+            width: 23%; /* Adjusted to have 4 columns with spacing */
+        }
+
+        /* Individual thumbnail item */
+        .thumbnail-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            background-color: #f4f4f4; /* Light grey background for thumbnails */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-size: cover; /* Ensure the background image covers the div */
+            background-position: center; /* Center the background image */
+            height: 300px; /* Fixed height */
+        }
+
+        .thumbnail-item:hover {
+
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Video styling for both portrait and landscape thumbnails */
+        .thumbnail-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image/video is cropped and fills the container */
+        }
+
+        /* Portrait style thumbnail */
+        .portrait {
+            height: 300px; /* Adjusted height for portrait */
+        }
+
+        /* Landscape style thumbnail */
+        .landscape {
+            height: 180px; /* Adjusted height for landscape */
+        }
+
+		        /* Footer Section */
+        footer {
+            background-color: whitesmoke;
+            color: black;
+            padding: 20px;
+            text-align: center;
+			font-weight: lighter; 
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+		}
+		footer .social-icons {
+			display: flex;
+			justify-content: center;
+			gap: 20px; /* Space between icons */
+			margin-top: 10px;
+		}
+
+		footer .social-icons a {
+			display: inline-block;
+		}
+
+		footer .social-icon {
+			width: 30px; /* Size of the icons */
+			height: 30px;
+			transition: transform 0.3s ease;
+		}
+
+footer .social-icon:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+        /* Space below thumbnails */
+        .space-bottom {
+            margin-bottom: 40px; /* Adds space below the last column */
+        }
+		
+		 /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: black;
+            margin: auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            max-height: 80%;
+            overflow: hidden;
+        }
+
+        .modal-content video {
+            width: 100%;
+            height: auto;
+            object-fit: contain; /* Ensure video fits inside modal */
+        }
+
+        /* Close button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #aaa;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="banner">
+            <img src="Images/MCF logo.png" alt="Milk Carton Films Logo" class="logo">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <div class="dropdown">
+                    <a href="#">Our Work</a>
+                    <div class="dropdown-content">
+                        <a href="weddings.html">Weddings</a>
+                        <a href="commercials.html">Commercials</a>
+                        <a href="editing.html">Editing</a>
+                        <a href="travel.html">Travel</a>
+                        <a href="miscellaneous.html">Miscellaneous Projects</a>
+                        <a href="events.html">Events</a>
+                    </div>
+                </div>
+                <a href="social-media.html">Social Media</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <div class="page-title">
+        <h1>COMMERCIALS</h1>
+    </div>
+
+    <!-- Thumbnail Container Section -->
+    <div class="thumbnail-container">
+        <!-- Columns with thumbnails go here -->
+	
+    	  <!-- Column 1 -->
+        <div class="column">
+            <div class="thumbnail-item portrait" data-thumbnail="Images/Drooleys Ad - frame at 0m2s.jpg">
+                <a href="javascript:void(0)" onclick="openModal('video1', 'Drooleys Ad.mp4')">
+                    <video id="video1" muted loop poster="Images/Drooleys Ad - frame at 0m2s.jpg">
+                        <source src="Video/Commercials/Drooleys Ad.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item landscape" data-thumbnail="Images/About us.png">
+                <a href="javascript:void(0)" onclick="openModal('video2', 'Classical.mp4')">
+                    <video id="video2" muted loop poster="Images/About us.png">
+                        <source src="Video/Commercials/Classical.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item portrait" data-thumbnail="Images/Grieve - frame at 3m16s.jpg">
+                <a href="javascript:void(0)" onclick="openModal('video3', 'Fuller and co video FINAL.mp4')">
+                    <video id="video3" muted loop poster="Images/Grieve - frame at 3m16s.jpg">
+                        <source src="Video/Commercials/Fuller and co video FINAL.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item landscape" data-thumbnail="Images/Anastasakis - frame at 2m59s.jpg">
+                <a href="javascript:void(0)" onclick="openModal('video4', 'Townhouse promo final cut.mp4')">
+                    <video id="video4" muted loop poster="Images/Anastasakis - frame at 2m59s.jpg">
+                        <source src="Video/Commercials/Townhouse promo final cut.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="column">
+            <div class="thumbnail-item portrait" data-thumbnail="Images/Dearle - frame at 0m4s.jpg">
+                <a href="TownhouseTrailer.html">
+                    <video id="video5" muted loop poster="Images/Dearle - frame at 0m4s.jpg">
+                        <source src="Video/Commercials/TH final short.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item landscape" data-thumbnail="Images/DPC Sandbar 2024 - frame at 0m28s.jpg">
+                <a href="RPs1e1.html">
+                    <video id="video6" muted loop poster="Images/DPC Sandbar 2024 - frame at 0m28s.jpg">
+                        <source src="Video/Commercials/1. In the kitchen 1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item portrait" data-thumbnail="Images/Hassell wedding - frame at 2m47s.jpg">
+                <a href="RPs1e2.html">
+                    <video id="video7" muted loop poster="Images/Hassell wedding - frame at 2m47s.jpg">
+                        <source src="Video/Commercials/2. In the kitchen 2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="column">
+            <div class="thumbnail-item landscape" data-thumbnail="Images/Murphy - frame at 1m29s.jpg">
+                <a href="RPs2e3.html">
+                    <video id="video8" muted loop poster="Images/Murphy - frame at 1m29s.jpg">
+                        <source src="Video/Commercials/3. At the market.MP4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item portrait" data-thumbnail="Images/Murphy - frame at 2m7s.jpg">
+                <a href="RPs2e1.html">
+                    <video id="video9" muted loop poster="Images/Murphy - frame at 2m7s.jpg">
+                        <source src="Video/Commercials/Ep 1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item landscape" data-thumbnail="Images/DPC Sandbar 2024 - frame at 0m35s.jpg">
+                <a href="RPs2e2.html">
+                    <video id="video10" muted loop poster="Images/DPC Sandbar 2024 - frame at 0m35s.jpg">
+                        <source src="Video/Commercials/Ep 2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item portrait" data-thumbnail="Images/DPC Sandbar 2024 - frame at 0m27s.jpg">
+                <a href="RPs2e3.html">
+                    <video id="video11" muted loop poster="Images/DPC Sandbar 2024 - frame at 0m27s.jpg">
+                        <source src="Video/Commercials/Ep 3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="column space-bottom">
+            <div class="thumbnail-item landscape" data-thumbnail="Images/ESK final - frame at 0m31s.jpg">
+                <a href="WorkClobber1.html">
+                    <video id="video12" muted loop poster="Images/ESK final - frame at 0m31s.jpg">
+                        <source src="Video/Commercials/Cinematic.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item portrait" data-thumbnail="Images/Woods - frame at 2m15s.jpg">
+                <a href="WC2.html">
+                    <video id="video13" muted loop poster="Images/Woods - frame at 2m15s.jpg">
+                        <source src="Video/Commercials/Boots.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+            <div class="thumbnail-item landscape" data-thumbnail="Images/About us.png">
+                <a href="WC3.html">
+                    <video id="video14" muted loop poster="Images/About us.png">
+                        <source src="Video/Commercials/Workwear.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+<footer>
+    <p>&copy; 2025 Milk Carton Films. All Rights Reserved.</p>
+    <div class="social-icons">
+		<a href="https://youtube.com/@milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon -YouTube.png" alt="YouTube" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com/milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon - Instagram.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://www.facebook.com/milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon - Facebook.png" alt="Facebook" class="social-icon">
+        </a>
+	</div>
+</footer>
+
+	
+	<!-- Modal Section -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <video id="modalVideo" controls>
+                <source id="modalSource" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+	
+	 <!-- Function to open the modal and display the video--> 
+     <script> function openModal(videoId, videoFile) {
+            const modal = document.getElementById("myModal");
+            const modalVideo = document.getElementById("modalVideo");
+            const modalSource = document.getElementById("modalSource");
+            modalSource.src = "Video/Commercials/" + videoFile;
+            modalVideo.load(); // Load the new video
+            modal.style.display = "flex"; // Show the modal
+            modalVideo.play(); // Play the video
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            const modalVideo = document.getElementById("modalVideo");
+            modal.style.display = "none"; // Hide the modal
+            modalVideo.pause(); // Pause the video
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+    <!-- JavaScript to play videos on hover and pause on mouse leave -->
+    <script>
+        const videos = document.querySelectorAll('video');
+        const thumbnailItems = document.querySelectorAll('.thumbnail-item');
+
+        thumbnailItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const video = item.querySelector('video');
+                video.play();
+            });
+
+            item.addEventListener('mouseleave', () => {
+                const video = item.querySelector('video');
+                video.pause();
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercials | Milk Carton Films</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "acumin-pro", sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        header .banner {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            background-color: transparent;
+        }
+
+        header .logo {
+            max-height: 55px;
+            width: auto;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3.5em;
+            margin: 20px 0 10px;
+            color: #333;
+        }
+
+        .page-subtext {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .top-videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .video-item {
+            text-align: center;
+        }
+
+        .video-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .series-section {
+            margin: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .series-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.5em;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .series-header .arrow {
+            transition: transform 0.3s;
+        }
+
+        .series-header.open .arrow {
+            transform: rotate(90deg);
+        }
+
+        .video-grid {
+            display: none; /* Hidden by default */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="banner">
+            <img src="Images/MCF logo.png" alt="Milk Carton Films Logo" class="logo">
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <div class="container">
+        <h1 class="page-title">Commercials</h1>
+        <p class="page-subtext">
+            Highlighting the creativity and passion behind every project.
+        </p>
+
+        <!-- Top Videos Grid -->
+        <div class="top-videos-grid">
+            <div class="video-item">
+                <video controls>
+                    <source src="Video/Commercials/Drooleys Ad.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Drooleys</h3>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="Video/Commercials/Classical.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Rustic Pantry</h3>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="Video/Commercials/Fuller and co video FINAL.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Fuller's Furniture</h3>
+            </div>
+        </div>
+
+        <!-- Townhouse Series -->
+        <div class="series-section">
+            <div class="series-header" onclick="toggleSection(this)">
+                Townhouse Coffee
+                <span class="arrow">▶</span>
+            </div>
+            <div class="video-grid">
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/Townhouse promo final cut.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Townhouse Trailer</h3>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/TH final short.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Townhouse Full Video</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rustic Pantry Series -->
+        <div class="series-section">
+            <div class="series-header" onclick="toggleSection(this)">
+                Rustic Pantry Series 1
+                <span class="arrow">▶</span>
+            </div>
+            <div class="video-grid">
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/1. In the kitchen 1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 1</h3>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/2. In the kitchen 2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 2</h3>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/3. At the market.MP4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 3</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="series-section">
+            <div class="series-header" onclick="toggleSection(this)">
+                Rustic Pantry Series 2
+                <span class="arrow">▶</span>
+            </div>
+            <div class="video-grid">
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/Ep 1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 1</h3>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/Ep 2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 2</h3>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/Ep 3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 3</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Work Clobber Series -->
+        <div class="series-section">
+            <div class="series-header" onclick="toggleSection(this)">
+                Work Clobber Series
+                <span class="arrow">▶</span>
+            </div>
+            <div class="video-grid">
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/Cinematic.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 1</h3>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/Boots.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 2</h3>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="Video/Commercials/Workwear.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Episode 3</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Milk Carton Films. All rights reserved. | <a href="contact.html">Contact Us</a></p>
+    </footer>
+
+    <script>
+        function toggleSection(header) {
+            const grid = header.nextElementSibling;
+            const arrow = header.querySelector('.arrow');
+            if (grid.style.display === "grid") {
+                grid.style.display = "none";
+                arrow.textContent = "▶";
+            } else {
+                grid.style.display = "grid";
+                arrow.textContent = "▼";
+            }
+        }
+    </script>
+</body>
+</html>
+
