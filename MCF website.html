@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk Carton Films</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Acumin Pro", sans-serif;
+            font-weight: 800;
+            font-style: normal;
+            overflow-x: hidden;
+            color: #000;
+        }
+
+        /* Header Section */
+        header .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            background-color: transparent;
+            padding: 5px 20px;
+        }
+
+        header .logo {
+            max-height: 55px;
+            width: auto;
+        }
+
+        nav {
+            background-color: transparent;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            align-items: center;
+            position: relative;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 15px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #f4f4f4;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            min-width: 150px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 1em;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f4f4f4;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Background Video Section */
+        .video-background {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .carton-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-height: 50%;
+            width: auto;
+            z-index: 1;
+        }
+
+        /* Thumbnail Container Section */
+        .thumbnail-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 30%;
+        }
+
+        .thumbnail-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            background-color: #f4f4f4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+        }
+
+        .thumbnail-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .thumbnail-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portrait {
+            height: 300px;
+        }
+
+        .landscape {
+            height: 180px;
+        }
+
+        /* Overlay Title and Subheading */
+        .thumbnail-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay background */
+            opacity: 0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+
+        .thumbnail-item:hover .thumbnail-overlay {
+            opacity: 1;
+        }
+
+        .thumbnail-overlay h3, .thumbnail-overlay p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        /* Section Break */
+        .section-break {
+            padding: 20px 0;
+            background-color: #f4f4f4;
+            text-align: center;
+            font-size: 40px;
+		}
+		.section-break h2 {
+ 	  		font-size: 40px;
+    		font-weight: 800; /* Change this value to adjust the font weight */
+			font-family: 
+}
+
+        
+
+        /* Category Grid Layout */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .category-item {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-item video.thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            background-color: black;
+        }
+
+        .category-item:hover video.thumbnail {
+            transform: scale(1.1);
+        }
+
+        .category-item .overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            font-size: 1.2em;
+            border-radius: 3px;
+        }
+
+        
+       /* Explore More Section Background Video */
+		.explore-more {
+			position: relative;
+			padding: 50px 20px;
+			color: white;
+			text-align: center;
+		}
+
+		.explore-video-background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			z-index: -1; /* Ensures the video is behind the content */
+		}
+
+		.explore-video-background video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.explore-more h2 {
+			position: relative;
+			z-index: 1;
+			font-size: 2em;
+			margin-bottom: 20px;
+		}
+
+		.explore-more .links {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			justify-content: center;
+			gap: 30px;
+			margin-top: 20px;
+			font-size: 20px;
+			font-family: acumen-pro; sans serif; 
+		}
+
+		.explore-more a {
+			color: whitesmoke; /* Text color when the background is white */
+			text-decoration: none;
+			padding: 25px;
+			border-radius: 5px;
+			background-color: black;/* Background color */
+			background-color: rgba(55, 55, 55, 0.8); /* 50% transparent white background */
+			font-family: "Acumin Pro", sans-serif; /* Match the banner font family */
+			font-weight: 700; 
+			transition: background-color 0.3s ease, transform 0.3s ease;
+		}
+
+		}
+
+		.explore-more a:hover {
+			background-color: white;
+			color: black;
+			transform: scale(1.1);
+		}
+
+
+		        /* Footer Section */
+        footer {
+            background-color: whitesmoke;
+            color: black;
+            padding: 20px;
+            text-align: center;
+			font-weight: lighter; 
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+		}
+		footer .social-icons {
+			display: flex;
+			justify-content: center;
+			gap: 20px; /* Space between icons */
+			margin-top: 10px;
+		}
+
+		footer .social-icons a {
+			display: inline-block;
+		}
+
+		footer .social-icon {
+			width: 30px; /* Size of the icons */
+			height: 30px;
+			transition: transform 0.3s ease;
+		}
+
+footer .social-icon:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="banner">
+            <img src="Images/MCF logo.png" alt="Milk Carton Films Logo" class="logo">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <div class="dropdown">
+                    <a href="#">Our Work</a>
+                    <div class="dropdown-content">
+                        <a href="weddings.html">Weddings</a>
+                        <a href="commercials.html">Commercials</a>
+                        <a href="events.html">Events</a>
+                        <a href="projects.html">Projects</a>
+                    </div>
+                </div>
+                <a href="social-media.html">Social Media</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Background Video Section -->
+    <section class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="Video/Events/DPC Sandbar 2024.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <img src="MCF White - logo word.png" alt="Carton Title" class="carton-image">
+    </section>
+
+    <!-- Section Break -->
+    <section class="section-break">
+        <h2>What We Do</h2>
+    </section>
+
+    <!-- Category Section -->
+     <!-- Thumbnail Container Section -->
+    <div class="thumbnail-container">
+        <!-- Column 1 -->
+        <div class="column">
+            <div class="thumbnail-item landscape" onmouseover="this.querySelector('video').play()" onmouseout="this.querySelector('video').pause()" onclick="openVideoPopup('Video/Weddings/Anastasakis.mp4')">
+                <video muted loop poster="Images/Anastasakis - frame at 2m59s.jpg">
+                    <source src="Video/Weddings/Anastasakis.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="thumbnail-overlay">
+                    <h3>Jess & Josh</h3>
+                    <p>Subheading or Description</p>
+                </div>
+            </div>
+            <div class="thumbnail-item portrait" onmouseover="this.querySelector('video').play()" onmouseout="this.querySelector('video').pause()" onclick="openVideoPopup('Video/Weddings/Hassell wedding.mp4')">
+                <video muted loop poster="Images/Hassell wedding - frame at 2m47s.jpg">
+                    <source src="Video/Weddings/Hassell wedding.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="thumbnail-overlay">
+                    <h3>Wedding Title</h3>
+                    <p>Subheading or Description</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="column">
+            <div class="thumbnail-item portrait" onmouseover="this.querySelector('video').play()" onmouseout="this.querySelector('video').pause()" onclick="openVideoPopup('Video/Weddings/Grieve.mp4')">
+                <video muted loop poster="Images/Grieve - frame at 3m18s.jpg">
+                    <source src="Video/Weddings/Grieve.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="thumbnail-overlay">
+                    <h3>Wedding Title</h3>
+                    <p>Subheading or Description</p>
+                </div>
+            </div>
+            <div class="thumbnail-item landscape" onmouseover="this.querySelector('video').play()" onmouseout="this.querySelector('video').pause()" onclick="openVideoPopup('Video/Weddings/Murphy.mp4')">
+                <video muted loop poster="Images/Murphy - frame at 1m29s.jpg">
+                    <source src="Video/Weddings/Murphy.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="thumbnail-overlay">
+                    <h3>Wedding Title</h3>
+                    <p>Subheading or Description</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="column">
+            <div class="thumbnail-item landscape" onmouseover="this.querySelector('video').play()" onmouseout="this.querySelector('video').pause()" onclick="openVideoPopup('Video/Weddings/Woods.mp4')">
+                <video muted loop poster="Images/Woods - frame at 2m15s.jpg">
+                    <source src="Video/Weddings/Woods.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="thumbnail-overlay">
+                    <h3>Wedding Title</h3>
+                    <p>Subheading or Description</p>
+                </div>
+            </div>
+            <div class="thumbnail-item portrait" onmouseover="this.querySelector('video').play()" onmouseout="this.querySelector('video').pause()" onclick="openVideoPopup('Video/Weddings/Dearle.mp4')">
+                <video muted loop poster="Images/Dearle - frame at 0m4s.jpg">
+                    <source src="Video/Weddings/Dearle.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="thumbnail-overlay">
+                    <h3>Wedding Title</h3>
+                    <p>Subheading or Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Explore More Section -->
+	 <section class="section-break">
+        <h2>Explore More</h2>
+    </section>
+	
+	<!-- PH for Rock fishing drone video -->
+<section class="explore-more">
+    <div class="explore-video-background">
+        <video autoplay muted loop id="explore-bg-video">
+            <source src="Video/Travel/Cambodia Highlights.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="links">
+        <a href="about.html">About Us</a>
+        <a href="social-media.html">Social Media</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+</section>
+
+
+   <!-- Footer Section -->
+<footer>
+    <p>&copy; 2025 Milk Carton Films. All Rights Reserved.</p>
+    <div class="social-icons">
+		<a href="https://youtube.com/@milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon -YouTube.png" alt="YouTube" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com/milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon - Instagram.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://www.facebook.com/milkcartonfilms" target="_blank">
+            <img src="Images/Icons/Icon - Facebook.png" alt="Facebook" class="social-icon">
+        </a>
+
+    </div>
+</footer>
+
+</body>
+</html>
